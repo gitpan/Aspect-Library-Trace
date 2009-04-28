@@ -27,8 +27,12 @@ DESCRIPTION
     -T" command provided by Devel::DProf (before that module became
     unusable).
 
+  Conventional Usage
     The basic usage is very simple, just create an "Trace" aspect as shown
     in the "SYNOPSIS".
+
+    Load Aspect, then Aspect::Library::Trace, then create the aspect using
+    the "aspect" function.
 
     Any calls to functions described in the pointcut will be printed to
     "STDERR". Nesting is indicated via indenting.
@@ -36,6 +40,14 @@ DESCRIPTION
     Because the depth is tracked at a per-Aspect level, you should avoid
     creating more than one trace Aspect or the indenting levels will be
     mixed up and the output will become largely meaningless.
+
+  Import Usage
+    For even more convenience (and even less typing) you can use the
+    following shorthand 1-line form.
+
+      use Aspect::Library::Trace qr/^Module::/;
+
+    When used this way, you also don't need to "use Aspect".
 
 SUPPORT
     Bugs should be reported via the CPAN bug tracker at
