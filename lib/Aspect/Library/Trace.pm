@@ -3,20 +3,22 @@ package Aspect::Library::Trace;
 use 5.006;
 use strict;
 use warnings;
-use Aspect     0.14 ();
-use Aspect::Modular ();
+use Aspect          0.16 ();
+use Aspect::Modular 0.16 ();
 
 use vars qw{$VERSION @ISA};
 BEGIN {
-	$VERSION = '0.02';
+	$VERSION = '0.16';
 	@ISA     = 'Aspect::Modular';
 }
 
 sub import {
 	my $class = shift;
+
 	if ( ref($_[0]) eq 'Regexp' ) {
 		Aspect::aspect( Trace => Aspect::call($_[0]) );
 	}
+
 	return 1;
 }
 
@@ -32,8 +34,15 @@ sub new {
 sub get_advice {
 	my $self   = shift;
 	my $cut    = shift;
-	my $before = Aspect::before { print STDERR '  ' x $self->{depth}++ . $_[0]->sub_name . "\n" } $cut;
-	my $after  = Aspect::after  { $self->{depth}-- } $cut;
+
+	my $before = Aspect::before {
+		print STDERR '  ' x $self->{depth}++ . $_[0]->sub_name . "\n";
+	} $cut;
+
+	my $after  = Aspect::after {
+		$self->{depth}--;
+	} $cut;
+
 	return ( $before, $after );
 }
 
