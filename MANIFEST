@@ -17,8 +17,10 @@ README
 t/01_compile.t
 t/02_simple.t
 t/03_import.t
+t/04_lexical.t
 t/97_meta.t
 t/98_pod.t
 t/99_pmv.t
 t/import.pl
+t/lexical.pl
 t/simple.pl
