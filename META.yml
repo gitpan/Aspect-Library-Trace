@@ -7,6 +7,7 @@ build_requires:
   File::Spec: 0.80
   IPC::Run3: 0.042
   Test::More: 0.42
+  Test::NoWarnings: 0.084
 configure_requires:
   ExtUtils::MakeMaker: 6.42
 distribution_type: module
@@ -28,4 +29,4 @@ resources:
   ChangeLog: http://fisheye2.atlassian.com/changelog/cpan/trunk/Aspect-Library-Trace
   license: http://dev.perl.org/licenses/
   repository: http://svn.ali.as/cpan/trunk/Aspect-Library-Trace
-version: 0.33
+version: 0.34
