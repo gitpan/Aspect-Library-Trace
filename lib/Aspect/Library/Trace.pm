@@ -3,13 +3,13 @@ package Aspect::Library::Trace;
 use 5.006;
 use strict;
 use warnings;
-use Aspect            0.33 ();
+use Aspect            0.98 ();
 use Aspect::Modular        ();
 use Aspect::Advice::Around ();
 
 use vars qw{$VERSION @ISA};
 BEGIN {
-	$VERSION = '0.34';
+	$VERSION = '0.98';
 	@ISA     = 'Aspect::Modular';
 }
 
@@ -30,7 +30,7 @@ sub get_advice {
 		pointcut => $_[1],
 		code     => sub {
 			print STDERR '  ' x $depth++ . $_[0]->sub_name . "\n";
-			$_[0]->run_original;
+			$_[0]->proceed;
 			$depth--;
 		},
 	);
@@ -115,7 +115,7 @@ L<Aspect>
 
 =head1 COPYRIGHT
 
-Copyright 2009 - 2010 Adam Kennedy.
+Copyright 2009 - 2011 Adam Kennedy.
 
 This program is free software; you can redistribute
 it and/or modify it under the same terms as Perl itself.
